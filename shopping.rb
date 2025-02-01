@@ -58,21 +58,21 @@ def user_input(choice, fruit_market, cart, total_price)
         puts ""
         puts "How many #{item_to_buy}"
         print "> "
-        purchase_quanity = gets.chomp.to_i    
+        purchase_quantity = gets.chomp.to_i    
 
         # Check if item_to_buy exists in inventory and if there is enough in stock
-        if fruit_market.key?(item_to_buy) && purchase_quanity <= fruit_market[item_to_buy][:quantity]
+        if fruit_market.key?(item_to_buy) && purchase_quantity <= fruit_market[item_to_buy][:quantity]
             # Add the item to the user cart
             if cart.key?(item_to_buy)  # Checks if item is in cart already and increases
-                cart[item_to_buy][:quantity] += purchase_quanity
+                cart[item_to_buy][:quantity] += purchase_quantity
             else    # Adds new item(s) to cart
                 cart[item_to_buy] = {
                     price: fruit_market[item_to_buy][:price],
-                    quantity: purchase_quanity
+                    quantity: purchase_quantity
                 }
             end
             # Adjusts fruit_market remaining inventory
-            fruit_market[item_to_buy][:quantity] -= purchase_quanity
+            fruit_market[item_to_buy][:quantity] -= purchase_quantity
         
             puts "#{item_to_buy} has been added to your cart!\n\n"
         else
